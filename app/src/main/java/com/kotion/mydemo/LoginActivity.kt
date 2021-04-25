@@ -18,6 +18,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+
+
+
+ 
+
         btn_login.setOnClickListener { v->
             login()
         }
@@ -28,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
         username=input_username.text.toString()
         pw=input_pw.text.toString()
         if (!username.isNotEmpty() and !pw.isNotEmpty()){
-          //  println("this is name: $username and pw:$pw")
+            println("this is name: $username and pw:$pw")
         }
     }
 
