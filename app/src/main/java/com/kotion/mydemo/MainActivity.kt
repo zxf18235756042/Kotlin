@@ -1,5 +1,7 @@
 package com.kotion.mydemo
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,11 +15,14 @@ import com.kotion.mydemo.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     var binding:ActivityMainBinding?=null
+    var username:String? = null
+    var context: Context? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
        // setContentView(R.layout.activity_main)
         binding=DataBindingUtil.setContentView<ActivityMainBinding>(this,R.layout.activity_main)
+        context=this
         initView()
     }
 
@@ -46,7 +51,8 @@ class MainActivity : AppCompatActivity() {
                 Log.i("TAG","click btn_login")
             }
             R.id.btn_register->{
-                Log.i("TAG","click btn_register")
+                var intent = Intent(context!!,HomeActivity::class.java)
+                startActivity(intent)
             }
             R.id.txt_username->{
                 Log.i("TAG","click txt_username")
