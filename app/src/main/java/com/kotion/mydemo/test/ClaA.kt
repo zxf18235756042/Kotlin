@@ -1,4 +1,4 @@
-package com.kotion.mydemo
+package com.kotion.mydemo.test
 
 class ClaA (
     var name:String,

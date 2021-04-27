@@ -4,13 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <!--定义一个变量 imgData 等同于 var imgData:ImgData-->
-        <variable
-            name="imgData"
-            type="com.kotion.mydemo.data.ImgData" />
-        <variable
-            name="clickEvt"
-            type="com.kotion.mydemo.MainActivity" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,34 +12,9 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/img"
-            imgUrl="@{imgData.url}"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_register"
-            android:text="注册"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="@{(view)->clickEvt.click(view)}"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_login"
-            android:text="登录"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="100dp"
-            android:onClick="@{(view)->clickEvt.click(view)}"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txt_username"
-            android:text="用户名"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="@{(view)->clickEvt.click(view)}"
-            android:layout_marginTop="200dp"/>
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:id="@+id/layout_main"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -10,13 +10,13 @@
             type="HomeViewModel" />
         <variable
             name="clickEvt"
-            type="com.kotion.mydemo.ClickEvt" />
+            type="com.kotion.mydemo.evts.ClickEvt" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".HomeActivity">
+        tools:context=".test.HomeActivity">
 
         <LinearLayout
             android:layout_width="match_parent"

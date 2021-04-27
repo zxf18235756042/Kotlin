@@ -1,14 +1,17 @@
-package com.kotion.mydemo
+package com.kotion.mydemo.test
 
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.observe
+import com.kotion.mydemo.R
 import com.kotion.mydemo.base.BaseActivity
 import com.kotion.mydemo.databinding.ActivityHomeBinding
+import com.kotion.mydemo.evts.ClickEvt
 
 import com.kotion.mydemo.vm.HomeViewModel
 
-class HomeActivity : BaseActivity<HomeViewModel,ActivityHomeBinding>(R.layout.activity_home,HomeViewModel::class.java),ClickEvt {
+class HomeActivity : BaseActivity<HomeViewModel,ActivityHomeBinding>(R.layout.activity_home,HomeViewModel::class.java),
+    ClickEvt {
     override fun initView(){
         mViewModel.resultType.observe(this,{
             when(it){

@@ -24,7 +24,7 @@ abstract class BaseActivity<VM : ViewModel, DB : ViewDataBinding>(
         super.onCreate(savedInstanceState)
         mContext = this
         mActivity = this
-        mDataBinding = DataBindingUtil.setContentView(this, layoutId)
+        mDataBinding = DataBindingUtil.setContentView(this,layoutId)
         mViewModel = ViewModelProvider(this).get(vmClass)
         initView()
         initVM()
