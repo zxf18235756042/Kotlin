@@ -24,8 +24,6 @@ class HomeActivity : BaseActivity<HomeViewModel,ActivityHomeBinding>(R.layout.ac
                 }
             }
         })
-
-
     }
 
 
@@ -42,7 +40,8 @@ class HomeActivity : BaseActivity<HomeViewModel,ActivityHomeBinding>(R.layout.ac
     }
 
     override fun initData() {
-        mViewModel.getDetail()
+        /*mViewModel.getDetail()
+        mViewModel.getIndex()*/
     }
 
     override fun initVariable() {

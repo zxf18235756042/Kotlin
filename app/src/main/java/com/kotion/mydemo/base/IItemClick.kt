@@ -1,5 +1,7 @@
 package com.kotion.mydemo.base
 
+import android.view.View
+
 interface IItemClick<T> {
-    fun itemClick(data:T)
+    fun clickListener(pos: Int,view: View)
 }

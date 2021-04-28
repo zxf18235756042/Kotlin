@@ -1,6 +1,7 @@
 package com.kotion.mydemo
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.kotion.mydemo.test.ClaA
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -57,7 +58,7 @@ class MyTest {
     }
 
     fun testCal(){
-        var  claA= ClaA("a",12)
+        var  claA= ClaA("a", 12)
         claA.save()
     }
 

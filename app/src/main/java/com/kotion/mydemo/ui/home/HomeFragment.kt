@@ -16,6 +16,7 @@ class HomeFragment :
     ClickEvt {
 
     private var tabIndex = 0
+    private var currentFragment:Fragment?=null
 
     /**
      * 提供的HomeFragment的实例
@@ -29,6 +30,27 @@ class HomeFragment :
     override fun initView() {
         //默认显示推荐页面
         selectTab(Constants.TAB_RECOMMEND)
+        showFragment(RecommandFragment.recommandFragment)
+    }
+
+
+    /**
+     * 切换当前的fragment
+     */
+    private fun showFragment(fragment: Fragment) {
+        if (fragment!=null){
+            var trans=fragmentManager!!.beginTransaction()
+            if (currentFragment!=null){
+                trans.hide(currentFragment!!)
+            }
+            currentFragment=currentFragment
+            //判断当前fargment是否添加到界面
+            if (!fragment.isAdded){
+                trans.add(R.id.fragmentbox,fragment).show(fragment).commit()
+            }else{
+                trans.show(fragment).commit()
+            }
+        }
     }
 
     /**
@@ -42,15 +64,14 @@ class HomeFragment :
         when (index) {
             Constants.TAB_CITY -> {
                 txt_city.textSize = 20.0f
-                channelFragment(CityFragment.cityFragment)
             }
             Constants.TAB_INTEREST -> {
                 txt_interest.textSize = 20.0f
-                channelFragment(InterestFragment.interestFragment)
+
             }
             Constants.TAB_RECOMMEND -> {
                 txt_recommend.textSize = 20.0f
-                channelFragment(RecommandFragment.recommandFragment)
+
             }
         }
     }
@@ -71,17 +92,17 @@ class HomeFragment :
         when (v.id) {
             R.id.txt_city -> {
                 if (tabIndex != Constants.TAB_CITY) {
-                    channelFragment(CityFragment.cityFragment)
+                    showFragment(CityFragment.cityFragment)
                 }
             }
             R.id.txt_interest -> {
                 if (tabIndex != Constants.TAB_INTEREST) {
-                    channelFragment(InterestFragment.interestFragment)
+                    showFragment(InterestFragment.interestFragment)
                 }
             }
             R.id.txt_recommend -> {
                 if (tabIndex != Constants.TAB_RECOMMEND) {
-                    channelFragment(RecommandFragment.recommandFragment)
+                    showFragment(RecommandFragment.recommandFragment)
                 }
             }
         }

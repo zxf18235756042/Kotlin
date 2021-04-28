@@ -47,10 +47,12 @@ open abstract class BaseAdapter<D>(
     override fun onBindViewHolder(holder: BaseVH, position: Int) {
         //获取当前条目布局的ID
         val layoutId = getItemViewType(position)
-        //获取layout id所对应的BR的id
-        var type = layouts.get(layoutId)
-        //界面组件显示数据的绑定
-        holder.databinding.setVariable(type, list.get(position))
+        if (layouts!=null && layouts.size()>0) {
+            //获取layout id所对应的BR的id
+            var type = layouts.get(layoutId)
+            //界面组件显示数据的绑定
+            holder.databinding.setVariable(type, list.get(position))
+        }
         holder.databinding.root.tag = list.get(position)
         bindData(holder.databinding, list.get(position), layoutId)
 

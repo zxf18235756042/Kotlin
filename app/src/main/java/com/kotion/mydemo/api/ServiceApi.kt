@@ -2,9 +2,7 @@ package com.kotion.mydemo.api
 
 import com.kotion.mydemo.base.BaseApi
 import com.kotion.mydemo.base.BaseResult
-import com.kotion.mydemo.data.ChannelData
-import com.kotion.mydemo.data.DetailData
-import com.kotion.mydemo.data.TrendsData
+import com.kotion.mydemo.data.*
 import retrofit2.http.*
 
 interface ServiceApi :BaseApi{
@@ -13,6 +11,10 @@ interface ServiceApi :BaseApi{
     @POST("api/cms/detail")
     suspend fun getDetail(@Query("id") id:Int):DetailData
 
+
+    @Headers("newurl:https://cdwan.cn/")
+    @GET("api/index")
+    suspend fun getIndex(): HomeData
     /**
      * 频道分类数据
      */
@@ -24,4 +26,20 @@ interface ServiceApi :BaseApi{
      */
     @GET("api/trends/trendsList")
     suspend fun getTrendsList(@QueryMap map:Map<String,String>):BaseResult<TrendsData>
+
+    /**
+     * 登录
+     */
+    @POST("api/auth/login")
+    @FormUrlEncoded
+    suspend fun login(@FieldMap map: Map<String, String>):BaseResult<LoginData>
+
+
+    /**
+     * 注册
+     */
+    @POST("api/auth/register")
+    @FormUrlEncoded
+    suspend fun register(@FieldMap map: Map<String, String>):BaseResult<RegisterData>
+
 }

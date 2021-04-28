@@ -16,6 +16,7 @@ import com.kotion.mydemo.databinding.FragmentChannelBinding
 import com.kotion.mydemo.evts.ClickEvt
 import com.kotion.mydemo.ui.home.adapters.TrendsAdapter
 import com.kotion.mydemo.vm.home.ChannelViewModel
+import com.kotion.mydemo.widget.RecyDecoration
 import kotlinx.android.synthetic.main.fragment_channel.*
 
 class ChannelFragment(
@@ -25,6 +26,7 @@ class ChannelFragment(
     R.layout.fragment_channel,
     ChannelViewModel::class.java
 ),ClickEvt {
+    lateinit var manager:StaggeredGridLayoutManager
     private var page:Int=1
     private var size:Int=10
 
@@ -34,8 +36,12 @@ class ChannelFragment(
     override fun initView() {
         layoutTypes.set(R.layout.layout__trends_item, BR.trendsData)
         trendsAdapter= TrendsAdapter(mContext,list,layoutTypes,this)
-        recyclerview.layoutManager=StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+        //recyclerview.layoutManager=StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+        manager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        manager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE
+        recyclerview.layoutManager=manager
         recyclerview.adapter=trendsAdapter
+        recyclerview.addItemDecoration(RecyDecoration(16,5))
     }
 
     override fun initVM() {
@@ -45,7 +51,12 @@ class ChannelFragment(
     }
 
     override fun initData() {
-
+        var map = HashMap<String, String>()
+        map.put("command", commandId.toString())
+        map.put("channelid", channelId.toString())
+        map.put("page", page.toString())
+        map.put("size", size.toString())
+        mViewModel.getTrendsList(map)
     }
 
     override fun initVariable() {

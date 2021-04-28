@@ -4,17 +4,156 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <!--定义一个变量 imgdata 等同于var imgdata:imgdata-->
+        <variable
+            name="mainEvt"
+            type="com.kotion.mydemo.evts.ClickEvt" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
+        <FrameLayout
+            android:id="@+id/fragments"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/layout_nav"/>
 
-      <FrameLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:id="@+id/layout_main"/>
+        <!--底部导航-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_nav"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:paddingVertical="5dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/layout_discover">
+
+                <ImageView
+                    android:id="@+id/img_home"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:src="@mipmap/main_nav_home_hl" />
+                <TextView
+                    android:id="@+id/txt_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/img_home"
+                    android:text="主页"
+                    android:textSize="14sp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_discover"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toRightOf="@id/layout_home"
+                app:layout_constraintRight_toLeftOf="@id/layout_more">
+
+                <ImageView
+                    android:id="@+id/img_discover"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:src="@mipmap/main_nav_discover_normal" />
+                <TextView
+                    android:id="@+id/txt_discover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/img_discover"
+                    android:text="发现"
+                    android:textSize="14sp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_more"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:onClick="@{(v)->mainEvt.clickListener(v)}"
+                app:layout_constraintLeft_toRightOf="@id/layout_discover"
+                app:layout_constraintRight_toLeftOf="@id/layout_message">
+
+                <ImageView
+                    android:id="@+id/img_more"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:src="@mipmap/main_nav_more_normal" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_message"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toRightOf="@id/layout_more"
+                app:layout_constraintRight_toLeftOf="@id/layout_mine">
+
+                <ImageView
+                    android:id="@+id/img_message"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:src="@mipmap/main_nav_message_normal" />
+                <TextView
+                    android:id="@+id/txt_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/img_message"
+                    android:text="消息"
+                    android:textSize="14sp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_mine"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toRightOf="@id/layout_message"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <ImageView
+                    android:id="@+id/img_mine"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@mipmap/main_nav_mine_normal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/txt_mine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/img_mine"
+                    android:text="我的"
+                    android:textSize="14sp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

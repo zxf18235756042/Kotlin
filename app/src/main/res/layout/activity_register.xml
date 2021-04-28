@@ -2,13 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <import type="com.kotion.mydemo.vm.login.LoginViewModel"/>
-        <variable
-            name="loginVM"
-            type="LoginViewModel" />
-        <variable
-            name="loginEvt"
-            type="com.kotion.mydemo.evts.ClickEvt" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,24 +18,21 @@
                 android:id="@+id/et_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="用户名"
-                android:text="@={loginVM.username}"/>
+                android:hint="用户名" />
 
             <EditText
                 android:id="@+id/et_pw"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="密码"
-                android:layout_marginTop="10dp"
-                android:text="@={loginVM.pw}"/>
+                android:layout_marginTop="10dp" />
 
             <Button
-                android:id="@+id/btn_login"
+                android:id="@+id/btn_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="登录"
-                android:layout_marginTop="40dp"
-                android:onClick="@{(v)->loginEvt.clickListener(v)}"/>
+                android:text="注册"
+                android:layout_marginTop="40dp" />
 
 
         </LinearLayout>

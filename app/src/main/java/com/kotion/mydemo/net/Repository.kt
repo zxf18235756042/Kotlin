@@ -13,6 +13,10 @@ class Repository:BaseRepository<ServiceApi>(ServiceApi::class.java) {
         api!!.getDetail(id)
     }
 
+    suspend fun getIndex() = withContext(Dispatchers.IO){
+        api!!.getIndex()
+    }
+
     /**
      * 获取频道分类数据
      */
@@ -25,5 +29,19 @@ class Repository:BaseRepository<ServiceApi>(ServiceApi::class.java) {
      */
     suspend fun getTrendsList(map:Map<String,String>) = withContext(Dispatchers.IO){
         api!!.getTrendsList(map)
+    }
+
+    /**
+     * 登录
+     */
+    suspend fun login(map:Map<String,String>) = withContext(Dispatchers.IO){
+        api!!.login(map)
+    }
+
+    /**
+     * 注册
+     */
+    suspend fun register(map:Map<String,String>) = withContext(Dispatchers.IO){
+        api!!.register(map)
     }
 }
