@@ -51,6 +51,29 @@ class AssetsUtils {
                 }
                 return 0
             }
+        /**
+         * 贴图的资源
+         */
+
+        fun getStickersIconByName(name:String):Int{
+            if("mq_emoji_1".equals(name)){
+                return R.mipmap.mq_emoji_1
+            }else if("mq_emoji_2".equals(name)){
+                return R.mipmap.mq_emoji_2
+            }else if("mq_emoji_3".equals(name)){
+                return R.mipmap.mq_emoji_3
+            }else if("mq_emoji_4".equals(name)){
+                return R.mipmap.mq_emoji_4
+            }else if("mq_emoji_5".equals(name)){
+                return R.mipmap.mq_emoji_5
+            }else if("mq_emoji_6".equals(name)){
+                return R.mipmap.mq_emoji_6
+            }else if("mq_emoji_7".equals(name)){
+                return R.mipmap.mq_emoji_7
+            }else{
+                return R.mipmap.mq_emoji_8
+            }
+        }
 
             /**
              * 通过name映射得到图片的滤镜

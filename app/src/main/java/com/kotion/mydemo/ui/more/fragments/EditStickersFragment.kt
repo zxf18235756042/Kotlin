@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.kotion.mydemo.R
 
+/**
+ * 编辑图片贴标签
+ */
 class EditStickersFragment: Fragment() {
     companion object{
         val instance:EditStickersFragment by lazy {

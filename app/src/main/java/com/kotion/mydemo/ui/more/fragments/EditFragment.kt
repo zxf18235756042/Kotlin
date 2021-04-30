@@ -11,7 +11,9 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.kotion.mydemo.R
 import com.kotion.mydemo.utils.AssetsUtils
+import com.kotion.mydemo.utils.DragLayout
 import com.kotion.mydemo.utils.FilterUtils
+import com.kotion.mydemo.utils.StickerWidget
 import kotlinx.android.synthetic.main.fragment_editfilter.*
 import java.io.File
 import java.net.URI
@@ -24,6 +26,7 @@ class EditFragment(
 ):Fragment() {
 
     private var imgPreview:ImageView? = null
+    private var dragLayout: DragLayout? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,5 +55,13 @@ class EditFragment(
         var matrix = AssetsUtils.getColorMatrixByName(filtername)
         var bitmap = FilterUtils.editImgColorMatrix(path,matrix)
         imgPreview!!.setImageBitmap(bitmap!!)
+    }
+    /**
+     * 添加标签
+     */
+    fun addStickerIcon(stickerName:String){
+        var widget = StickerWidget(context!!)
+        widget.addImg(stickerName)
+        dragLayout!!.addView(widget)
     }
 }
