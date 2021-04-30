@@ -1,0 +1,22 @@
+[
+  {
+    "name":"森林",
+    "icon": "heart0"
+  },
+  {
+    "name":"风景",
+    "icon": "heart1"
+  },
+  {
+    "name":"美味",
+    "icon": "heart2"
+  },
+  {
+    "name":"美颜",
+    "icon": "heart3"
+  },
+  {
+    "name":"旅游",
+    "icon": "heart4"
+  }
+]

@@ -3,6 +3,7 @@ package com.kotion.mydemo.base
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -39,6 +40,11 @@ abstract class BaseActivity<VM : ViewModel, DB : ViewDataBinding>(
     protected abstract fun initData()
 
     protected abstract fun initVariable()
+     protected fun  showTips(tips:String){
+         Toast.makeText(mContext,tips, Toast.LENGTH_SHORT).show()
+     }
+
+
 
 
 }

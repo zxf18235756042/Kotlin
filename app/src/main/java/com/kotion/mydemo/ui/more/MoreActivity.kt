@@ -55,6 +55,7 @@ class MoreActivity: BaseActivity<MoreViewModel, ActivityMoreBinding>
                     files.add(item.path) //本地文件的路径
                 }
                 moreAdapter!!.refreshData(files)
+                mViewModel.bigPath=selectList.get(0).path
             }else{
                 Log.i("TAG","没有选择任何图片")
             }
@@ -78,7 +79,17 @@ class MoreActivity: BaseActivity<MoreViewModel, ActivityMoreBinding>
         //下一步
         when(v.id){
             R.id.txt_next ->{
-
+                if (files.size>0){
+                    var intent=Intent(mContext,EditImageActivity::class.java)
+                    intent.putStringArrayListExtra("imgs",files)
+                    startActivity(intent)
+                }else{
+                    showTips("请先选择图片")
+                }
+            }
+            R.id.layout_item->{
+                var path:String=v.tag as String
+                mViewModel.bigPath=path
             }
         }
     }

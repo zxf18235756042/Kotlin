@@ -5,6 +5,7 @@ import android.util.SparseArray
 import android.widget.ImageView
 import androidx.databinding.ViewDataBinding
 import com.bumptech.glide.Glide
+import com.kotion.mydemo.BR
 import com.kotion.mydemo.R
 import com.kotion.mydemo.base.BaseAdapter
 
@@ -27,6 +28,8 @@ class MoreAdapter(
     override fun bindData(binding: ViewDataBinding, data: String, layId: Int) {
         var img = binding.root.findViewById<ImageView>(R.id.img_item)
         Glide.with(img).load(data!!).into(img)
+        binding.root.tag=data
+        binding.setVariable(BR.clickEvt,clickEvt)
     }
 
 }

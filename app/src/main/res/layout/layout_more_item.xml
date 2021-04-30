@@ -3,11 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="moreEvt"
+            type="com.kotion.mydemo.evts.ClickEvt" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_item"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:onClick="@{(v)->moreEvt.clickListener(v)}">
 
         <ImageView
             android:id="@+id/img_item"

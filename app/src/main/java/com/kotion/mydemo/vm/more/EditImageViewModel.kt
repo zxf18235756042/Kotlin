@@ -4,11 +4,7 @@ import com.kotion.mydemo.base.BaseViewModel
 import com.kotion.mydemo.net.Inject
 import com.kotion.mydemo.net.Repository
 
-
-/**
- *   author ：H C
- *   time ：2021/4/28
- */
-class MoreViewModel: BaseViewModel<Repository>(Inject.repository) {
-    var bigPath:String = ""
+class EditImageViewModel :BaseViewModel<Repository>(Inject.repository){
+    var currencyIndex:Int =0
+    var imgTotal:Int =0
 }
