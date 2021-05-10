@@ -44,6 +44,11 @@ android {
         //dataBinding true
         viewBinding true
     }
+
+    //序列化配置
+    androidExtensions{
+        experimental = true
+    }
 }
 
 dependencies {
@@ -93,4 +98,17 @@ dependencies {
     //操作本地相机相册
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.3'
 
+    //oss
+    implementation 'com.aliyun.dpa:oss-android-sdk:+'
+
+
+    //smartrefresh分页加载
+    implementation  'com.scwang.smart:refresh-layout-kernel:2.0.3'      //核心必须依赖
+    implementation  'com.scwang.smart:refresh-header-classics:2.0.3'    //经典刷新头
+    implementation  'com.scwang.smart:refresh-header-radar:2.0.3'       //雷达刷新头
+    implementation  'com.scwang.smart:refresh-header-falsify:2.0.3'     //虚拟刷新头
+    implementation  'com.scwang.smart:refresh-header-material:2.0.3'    //谷歌刷新头
+    implementation  'com.scwang.smart:refresh-header-two-level:2.0.3'   //二级刷新头
+    implementation  'com.scwang.smart:refresh-footer-ball:2.0.3'        //球脉冲加载
+    implementation  'com.scwang.smart:refresh-footer-classics:2.0.3'    //经典加载
 }

@@ -8,6 +8,7 @@ import com.kotion.mydemo.evts.ClickEvt
 import com.kotion.mydemo.ui.home.HomeFragment
 import com.kotion.mydemo.ui.login.LoginActivity
 import com.kotion.mydemo.ui.more.MoreActivity
+import com.kotion.mydemo.ui.more.SubmitActivity
 import com.kotion.mydemo.vm.MainViewModel
 import com.shop.utils.MyMmkv
 
@@ -48,6 +49,11 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(
                     var intent = Intent(this, MoreActivity::class.java)
                      startActivity(intent)
                 }
+            }
+            R.id.layout_mine->{
+                //进入草稿页面
+                var intent =Intent(this,SubmitActivity::class.java)
+                startActivity(intent)
             }
         }
     }

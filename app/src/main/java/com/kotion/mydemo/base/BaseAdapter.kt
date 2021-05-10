@@ -30,7 +30,17 @@ open abstract class BaseAdapter<D>(
         notifyDataSetChanged()
     }
 
-
+    /**
+     * 刷新数据的集合
+     */
+    fun addData(index:Int,data:ArrayList<D>){
+        if(list.size == 0){
+            list.addAll(data)
+        }else{
+            list.addAll(index,data)
+        }
+        notifyDataSetChanged()
+    }
     /**
      * 用来初始化创建ViewHolder
      */

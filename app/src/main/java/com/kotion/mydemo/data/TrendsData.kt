@@ -11,7 +11,7 @@ data class TrendsDataItem(
     val avater: Any,
     val channelid: Int,
     val date: String,
-    val goods: Int,
+    var goods: Int,
     val id: Int,
     val lat: Int,
     val lng: Int,

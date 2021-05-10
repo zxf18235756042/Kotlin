@@ -1,4 +1,4 @@
-package com.kotion.mydemo.utils
+package com.kotion.mydemo.widget
 
 import android.content.Context
 import android.view.MotionEvent
@@ -6,17 +6,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
+import com.kotion.mydemo.utils.AssetsUtils
 
 class StickerWidget(
         context: Context
 ):FrameLayout(context),View.OnTouchListener {
 
-    init {
-        this.setOnTouchListener(this)
-    }
-
     var w = 80
     var h = 80
+    var lt = 0
+    var tp = 0
+    var rt = 0
+    var bt = 0
+
+    init {
+        this.setOnTouchListener(this)
+        if(lt != 0 || tp != 0 || rt != 0 || bt != 0){
+            layout(lt,tp,rt,bt)
+        }
+    }
+
+
 
     fun addImg(stickerName:String){
         var img = ImageView(context)
@@ -24,7 +34,7 @@ class StickerWidget(
         img.setImageResource(rid)
         img.tag = 1
         var param = LayoutParams(w,h)
-        img.layoutParams = param
+        layoutParams = param
         addView(img)
     }
 
@@ -49,7 +59,11 @@ class StickerWidget(
                         var r = v!!.right
                         var t = v!!.top
                         var b = v!!.bottom
-                        curView!!.layout(l+dx,t+dy,r+dx,b+dy)
+                        lt = l+dx
+                        tp = t+dy
+                        rt = r+dx
+                        bt = b+dy
+                        curView!!.layout(lt,tp,rt,bt)
                         if(v!!.tag != null){
                             /*var tag = v!!.tag as ImgData.Tag
                             tag!!.x = (l+dx).toFloat()
@@ -67,6 +81,17 @@ class StickerWidget(
             curView = null
         }
         return true
+    }
+
+    /**
+     * 刷新组件位置
+     */
+    fun refreshPosition(){
+        var param:FrameLayout.LayoutParams = layoutParams as LayoutParams? ?: LayoutParams(LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT)
+        param.setMargins(lt,tp,rt,bt)
+        param.width = width
+        param.height = height
+        layoutParams = param
     }
 
 }

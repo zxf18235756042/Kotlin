@@ -12,6 +12,7 @@ import com.kotion.mydemo.api.Constants
 import com.kotion.mydemo.base.BaseAdapter
 import com.kotion.mydemo.data.TrendsDataItem
 import com.kotion.mydemo.evts.ClickEvt
+import com.kotion.mydemo.utils.UserUtils
 
 class TrendsAdapter (
     context: Context,
@@ -26,7 +27,17 @@ class TrendsAdapter (
 
     override fun bindData(binding: ViewDataBinding, data: TrendsDataItem, layId: Int) {
         binding.setVariable(BR.clickEvt,clickEvt)
-        val imgType=binding.root.findViewById<ImageView>(R.id.img_type)
+        val imgGood=binding.root.findViewById<ImageView>(R.id.img_good)
+        imgGood.tag = data
+        /**
+         * 点赞数据的判断
+         */
+        if(UserUtils.isGoods(data.id)){
+            imgGood.setImageResource(R.mipmap.ic_like)
+        }else{
+            imgGood.setImageResource(R.mipmap.tab_like_normal)
+        }
+        val imgType = binding.root.findViewById<ImageView>(R.id.img_type)
         if (data.type==Constants.TYPE_IMAGE){
             if (data.res.size>1){
                 imgType.visibility= View.VISIBLE

@@ -4,6 +4,7 @@ import com.kotion.mydemo.api.ServiceApi
 import com.kotion.mydemo.base.BaseRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import okhttp3.RequestBody
 
 class Repository:BaseRepository<ServiceApi>(ServiceApi::class.java) {
     /**
@@ -44,4 +45,33 @@ class Repository:BaseRepository<ServiceApi>(ServiceApi::class.java) {
     suspend fun register(map:Map<String,String>) = withContext(Dispatchers.IO){
         api!!.register(map)
     }
+
+    /**
+     * 获取品牌数据
+     */
+    suspend fun getBrand(page:Int,size:Int)= withContext(Dispatchers.IO){
+        api!!.getBrand(page,size)
+    }
+    /**
+     * 获取商品数据
+     */
+    suspend fun getGoods(page:Int,size:Int)= withContext(Dispatchers.IO){
+        api!!.getGoods(page,size)
+    }
+    suspend fun submitData(body: RequestBody) = withContext(Dispatchers.IO){
+        api!!.submitTrends(body)
+    }
+
+    suspend fun refreshToken() = withContext(Dispatchers.IO){
+        api!!.refreshToken()
+    }
+
+    suspend fun postTrendsGood(trendsid:Int) = withContext(Dispatchers.IO){
+        api!!.postTrendsGood(trendsid)
+    }
+
+    suspend fun getAllTrendsGood() = withContext(Dispatchers.IO){
+        api!!.getAllTrendsGood()
+    }
+
 }

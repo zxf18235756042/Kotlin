@@ -12,13 +12,16 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class RetrofitFactory {
+class
+
+
+RetrofitFactory {
     /**
      * 伴生对象 单例
      */
 
-    companion object{
-        val instance:RetrofitFactory by lazy {
+    companion object {
+        val instance: RetrofitFactory by lazy {
             RetrofitFactory()
         }
     }
@@ -29,12 +32,12 @@ class RetrofitFactory {
     //初始化
     init {
         //通用拦截
-        interceptor = Interceptor {
-                chain -> val request = chain.request()
-            .newBuilder()
-            .addHeader("charset","UTF-8")
-            .addHeader("sprout-token", MyMmkv.getString("token"))
-            .build()
+        interceptor = Interceptor { chain ->
+            val request = chain.request()
+                .newBuilder()
+                .addHeader("charset", "UTF-8")
+                .addHeader("sprout-token", MyMmkv.getString("token"))
+                .build()
             chain.proceed(request)
         }
 
@@ -55,20 +58,20 @@ class RetrofitFactory {
             .addInterceptor(MoreBaseUrlInterceptor())
             .addInterceptor(LoggingInterceptor())
             .addInterceptor(interceptor)
-            .connectTimeout(60, TimeUnit.SECONDS)
-            .readTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(120, TimeUnit.SECONDS)
+            .readTimeout(120, TimeUnit.SECONDS)
             .build()
     }
 
     /*
         日志拦截器
      */
-    class LoggingInterceptor:Interceptor{
+    class LoggingInterceptor : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             var request = chain.request()
             var response = chain.proceed(request)
             var responseBody = response.peekBody(Long.MAX_VALUE)
-            Log.i("responseBody",responseBody.string())
+            Log.i("responseBody", responseBody.string())
             return response
         }
     }
@@ -76,7 +79,7 @@ class RetrofitFactory {
     /**
      * 基础地址
      */
-    class MoreBaseUrlInterceptor:Interceptor{
+    class MoreBaseUrlInterceptor : Interceptor {
 
         override fun intercept(chain: Interceptor.Chain): Response {
             var req = chain.request()
@@ -84,7 +87,7 @@ class RetrofitFactory {
             //builder
             var builder = req.newBuilder()
             var newUrl = req.header("newurl")
-            if(newUrl != null && newUrl!!.isNotEmpty()){
+            if (newUrl != null && newUrl!!.isNotEmpty()) {
                 var baseUrl = HttpUrl.parse(newUrl)
                 var newHttpUrl = HttpUrl.Builder()
                     .scheme(baseUrl!!.scheme())
@@ -103,7 +106,7 @@ class RetrofitFactory {
     /*
         具体服务实例化
      */
-    fun <T> create(service:Class<T>):T{
+    fun <T> create(service: Class<T>): T {
         return retrofit.create(service)
     }
 

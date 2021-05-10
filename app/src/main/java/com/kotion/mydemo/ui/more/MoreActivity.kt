@@ -80,7 +80,7 @@ class MoreActivity: BaseActivity<MoreViewModel, ActivityMoreBinding>
         when(v.id){
             R.id.txt_next ->{
                 if (files.size>0){
-                    var intent=Intent(mContext,EditImageActivity::class.java)
+                    var intent=Intent(this,EditImageActivity::class.java)
                     intent.putStringArrayListExtra("imgs",files)
                     startActivity(intent)
                 }else{

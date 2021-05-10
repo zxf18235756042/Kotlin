@@ -1,22 +1,17 @@
 package com.kotion.mydemo.ui.more.fragments
 
-import android.graphics.ColorMatrix
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.kotion.mydemo.R
-import com.kotion.mydemo.utils.AssetsUtils
-import com.kotion.mydemo.utils.DragLayout
-import com.kotion.mydemo.utils.FilterUtils
-import com.kotion.mydemo.utils.StickerWidget
-import kotlinx.android.synthetic.main.fragment_editfilter.*
-import java.io.File
-import java.net.URI
+import com.kotion.mydemo.data.GridImgData
+import com.kotion.mydemo.utils.*
+import com.kotion.mydemo.widget.DragLayout
+import com.kotion.mydemo.widget.StickerWidget
 
 /**
  * 编辑图片的页面 滤镜
@@ -24,9 +19,8 @@ import java.net.URI
 class EditFragment(
        var path:String
 ):Fragment() {
-
     private var imgPreview:ImageView? = null
-    private var dragLayout: DragLayout? = null
+    private var dragLayout:DragLayout? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,11 +33,16 @@ class EditFragment(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        dragLayout = view as DragLayout
         imgPreview = view.findViewById(R.id.img_preview)
         refreshImageUrl(path)
 
     }
 
+
+    /**
+     * 切换图片刷新
+     */
     fun refreshImageUrl(path:String){
         imgPreview!!.setImageURI(Uri.parse(path))
     }
@@ -57,11 +56,32 @@ class EditFragment(
         imgPreview!!.setImageBitmap(bitmap!!)
     }
     /**
-     * 添加标签
+     * 添加图标
      */
     fun addStickerIcon(stickerName:String){
+        //添加子组件之前把原来添加的组件的数据保存刷新
+        dragLayout!!.saveRefreshParams()
         var widget = StickerWidget(context!!)
         widget.addImg(stickerName)
-        dragLayout!!.addView(widget)
+        dragLayout!!.addChild(widget)
+    }
+
+    /**
+     * 添加标签
+     */
+    fun addTags(tagsType:TagsType,tagsId:Int,tagsName:String){
+        dragLayout!!.saveRefreshParams()
+        var tagsWidget = TagsWidget(context!!,tagsName,tagsType,tagsId)
+        tagsWidget.addTagView()
+        dragLayout!!.addTagsChild(tagsWidget)
+    }
+
+    fun getGridImgData(): GridImgData {
+        if (dragLayout==null){
+            return  GridImgData(path, arrayListOf())
+        }
+        var list = dragLayout!!.getImgsDataList()
+        var item = GridImgData(path,list)
+        return item
     }
 }

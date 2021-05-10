@@ -132,7 +132,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 app:layout_constraintLeft_toRightOf="@id/layout_message"
-                app:layout_constraintRight_toRightOf="parent">
+                app:layout_constraintRight_toRightOf="parent"
+                android:onClick="@{(v)->mainEvt.clickListener(v)}">
 
                 <ImageView
                     android:id="@+id/img_mine"

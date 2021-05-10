@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 abstract class BaseFragment <VM:ViewModel,DB:ViewDataBinding>(
+
     val layoutId:Int,
     val vmClass:Class<VM>
 ):Fragment(){
