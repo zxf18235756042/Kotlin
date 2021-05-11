@@ -19,7 +19,7 @@
         android:theme="@style/Theme.Mydemo"
         android:usesCleartextTraffic="true">
         <activity android:name=".test.HomeActivity"></activity>
-        <activity android:name=".MainActivity"
+        <activity android:name=".widget.ViewsActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,6 +34,9 @@
         <activity android:name=".ui.more.TagsActivity"></activity>
         <activity android:name=".ui.more.SubmitActivity"></activity>
         <activity android:name=".ui.more.ChannelActivity"></activity>
+        <activity android:name=".MainActivity">
+
+        </activity>
     </application>
 
 </manifest>
